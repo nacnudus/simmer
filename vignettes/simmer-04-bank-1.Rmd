@@ -355,7 +355,7 @@ customer <-
   log_(function(attr) {paste("Waited: ", now(bank) - attr["start_time"])}) %>%
   timeout(12) %>%
   release("counter") %>%
-  log_(function(attr) {paste("Finished: ", now(bank))})
+  log_(function() {paste("Finished: ", now(bank))})
 
 bank <-
   simmer("bank") %>%
@@ -397,7 +397,7 @@ customer <-
   # arrival
   timeout(function() {rexp(1, 1/12)}) %>%
   release("counter") %>%
-  log_(function(attr) {paste("Finished: ", now(bank))})
+  log_(function() {paste("Finished: ", now(bank))})
 
 bank <-
   simmer("bank") %>%
@@ -446,7 +446,7 @@ customer <-
   log_(function(attr) {paste("Waited: ", now(bank) - attr["start_time"])}) %>%
   timeout(function() {rexp(1, 1/12)}) %>%
   release("counter") %>%
-  log_(function(attr) {paste("Finished: ", now(bank))})
+  log_(function() {paste("Finished: ", now(bank))})
 
 bank <-
   simmer("bank") %>%
@@ -491,7 +491,7 @@ customer <-
   log_(function(attr) {paste("Waited: ", now(bank) - attr["start_time"])}) %>%
   timeout(function() {rexp(1, 1/12)}) %>%
   release_selected %>%
-  log_(function(attr) {paste("Finished: ", now(bank))})
+  log_(function() {paste("Finished: ", now(bank))})
 
 bank <-
   simmer("bank") %>%
